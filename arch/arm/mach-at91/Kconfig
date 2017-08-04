@@ -100,6 +100,13 @@ config TARGET_SAMA5D2_XPLAINED
 	select BOARD_EARLY_INIT_F
 	select BOARD_LATE_INIT
 
+config TARGET_SAMA5D2_SISOUL_PLATFORM
+	bool "SAMA5D2 Sisoul Platform board"
+	select CPU_V7
+	select SUPPORT_SPL
+	select BOARD_EARLY_INIT_F
+	select BOARD_LATE_INIT
+
 config TARGET_SAMA5D27_SOM1_EK
 	bool "SAMA5D27 SOM1 EK board"
 	select CPU_V7
@@ -208,5 +215,6 @@ source "board/ronetix/pm9g45/Kconfig"
 source "board/siemens/corvus/Kconfig"
 source "board/siemens/taurus/Kconfig"
 source "board/siemens/smartweb/Kconfig"
+source "board/sisoul/sama5d2_sisoul_platform/Kconfig"
 
 endif

@@ -1,0 +1,6 @@
+SAMA5D2 PLATFORM BOARD
+M:	Youngseon Kim <sean.kim@sisoul.co.kr>
+S:	Maintained
+F:	board/sisoul/sama5d2_platform/
+F:	include/configs/sama5d2_sisoul_platform.h
+F:	configs/sama5d2_sisoul_platform_mmc_defconfig

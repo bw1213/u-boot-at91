@@ -1,0 +1,15 @@
+if TARGET_SAMA5D2_SISOUL_PLATFORM
+
+config SYS_BOARD
+	default "sama5d2_sisoul_platform"
+
+config SYS_VENDOR
+	default "sisoul"
+
+config SYS_SOC
+	default "at91"
+
+config SYS_CONFIG_NAME
+	default "sama5d2_sisoul_platform"
+
+endif
