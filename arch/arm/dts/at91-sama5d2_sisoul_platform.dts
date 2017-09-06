@@ -32,10 +32,6 @@
 			u-boot,dm-pre-reloc;
 		};
 
-		sdmmc1: sdio-host@b0000000 {
-			status = "okay"; /* conflict with qspi0 */
-		};
-
 		apb {
 			hlcdc: hlcdc@f0000000 {
 				atmel,vl-bpix = <5>;
@@ -51,30 +47,18 @@
 						clock-frequency = <9000000>;
 						hactive = <480>;
 						vactive = <272>;
-						hsync-len = <41>;
-						hfront-porch = <2>;
-						hback-porch = <2>;
-						vfront-porch = <2>;
-						vback-porch = <2>;
-						vsync-len = <11>;
+						hsync-len = <1>;
+                        hsync-active = <0>;
+                        vsync-active = <0>;
+                        pixelclk-active = <0>;
+                        de-active = <1>;
+						hfront-porch = <5>;
+						hback-porch = <40>;
+						vfront-porch = <8>;
+						vback-porch = <8>;
+						vsync-len = <1>;
 						u-boot,dm-pre-reloc;
 					};
-				};
-			};
-
-			qspi0: spi@f0020000 {
-				pinctrl-names = "default";
-				pinctrl-0 = <&pinctrl_qspi0_sck_cs_default &pinctrl_qspi0_dat_default>;
-				status = "okay";
-				u-boot,dm-pre-reloc;
-
-				spi_flash@0 {
-					compatible = "spi-flash";
-					reg = <0>;
-					spi-max-frequency = <50000000>;
-					spi-rx-bus-width = <4>;
-					spi-tx-bus-width = <4>;
-					u-boot,dm-pre-reloc;
 				};
 			};
 
@@ -135,7 +119,7 @@
 					};
 
 					pinctrl_lcd_pwm: pinctrl_lcd_pwm {
-						pinmux = <PIN_PC3__LCDPWM>;
+						pinmux = <PIN_PC31__GPIO>;
 						bias-disable;
 					};
 
@@ -186,22 +170,6 @@
 						bias-disable;
 					};
 
-					pinctrl_qspi0_sck_cs_default: qspi0_sck_cs_default {
-						pinmux = <PIN_PA22__QSPI0_SCK>,
-							 <PIN_PA23__QSPI0_CS>;
-						bias-disable;
-						u-boot,dm-pre-reloc;
-					};
-
-					pinctrl_qspi0_dat_default: qspi0_dat_default {
-						pinmux = <PIN_PA24__QSPI0_IO0>,
-							 <PIN_PA25__QSPI0_IO1>,
-							 <PIN_PA26__QSPI0_IO2>,
-							 <PIN_PA27__QSPI0_IO3>;
-						bias-pull-up;
-						u-boot,dm-pre-reloc;
-					};
-
 					pinctrl_sdmmc0_cmd_dat_default: sdmmc0_cmd_dat_default {
 						pinmux = <PIN_PA1__SDMMC0_CMD>,
 							 <PIN_PA2__SDMMC0_DAT0>,
@@ -214,26 +182,7 @@
 
 					pinctrl_sdmmc0_ck_cd_default: sdmmc0_ck_cd_default {
 						pinmux = <PIN_PA0__SDMMC0_CK>,
-							 <PIN_PA10__SDMMC0_RSTN>,
-							 <PIN_PA11__SDMMC0_VDDSEL>,
 							 <PIN_PA13__SDMMC0_CD>;
-						bias-disable;
-						u-boot,dm-pre-reloc;
-					};
-
-					pinctrl_sdmmc1_cmd_dat_default: sdmmc1_cmd_dat_default {
-						pinmux = <PIN_PA28__SDMMC1_CMD>,
-							 <PIN_PA18__SDMMC1_DAT0>,
-							 <PIN_PA19__SDMMC1_DAT1>,
-							 <PIN_PA20__SDMMC1_DAT2>,
-							 <PIN_PA21__SDMMC1_DAT3>;
-						bias-pull-up;
-						u-boot,dm-pre-reloc;
-					};
-
-					pinctrl_sdmmc1_ck_cd_default: sdmmc1_ck_cd_default {
-						pinmux = <PIN_PA22__SDMMC1_CK>,
-							 <PIN_PA30__SDMMC1_CD>;
 						bias-disable;
 						u-boot,dm-pre-reloc;
 					};
